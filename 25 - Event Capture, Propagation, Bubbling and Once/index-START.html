@@ -40,8 +40,27 @@
   }
 </style>
 
-<button></button>
+<button>Am Button</button>
 <script>
+
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
+
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation(); // stop bubbling!
+  };
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false, // default state, causes events to bubble
+    once: true, // will only run the code blick once, have to refrsh the page to reset
+  }));
+
+  button.addEventListener('click', ()=> {
+    console.log('click!!!!');
+  }, {
+    once: true,
+  });
 
 </script>
 </body>
